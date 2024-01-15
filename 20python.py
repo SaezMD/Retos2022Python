@@ -20,7 +20,6 @@ def convertToMiliseconds(days :int, hours :int, minutes :int, seconds :int) -> i
     print(miliSec)
     return miliSec
 
-
 convertToMiliseconds(2,5,30,15)
 convertToMiliseconds(0,0,0,1)
 convertToMiliseconds(1,0,0,0)
