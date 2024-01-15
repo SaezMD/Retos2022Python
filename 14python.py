@@ -14,8 +14,20 @@ def returnFactorial(number: int) -> int:
     return print(solve)
 
 
+def factorialRecursive(number: int) -> int:
+
+    if number == 1:
+       return 1
+    else:
+        return number * factorialRecursive(number-1)
+
+    
+
 returnFactorial(0)
 returnFactorial(1)
 returnFactorial(2)
 returnFactorial(5)
 returnFactorial(100)
+
+print(factorialRecursive(5))
+      
