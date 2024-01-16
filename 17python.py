@@ -12,7 +12,7 @@ def firstInUpper(string: str) -> str:
     resultList = []
 
     for i in wordsList:
-        if re.match('^\W', i[:1]):
+        if re.match('^\W', i[:1]): #if first character is not a word, change the second character
             wordUp =  i[0:1] + i[1:2].upper() + i[2:]
         else:
             wordUp = i[:1].upper() + i[1:]
