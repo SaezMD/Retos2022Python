@@ -58,3 +58,29 @@ maxCommonDivisor(102,72)
 maxCommonDivisor(300,198)
 maxCommonDivisor(5,3)
 maxCommonDivisor(200,300)
+
+def minCommonMultipler(number1: int, number2: int) -> int:
+    """fucntion to get the minimun common multiplier"""
+    desc01 = primeDescomp(number1)
+    desc02 = primeDescomp(number2)
+    #print(desc01,desc02)
+
+    #get the non commond and commond factors with the max. exponent
+    factors = {}
+    for number, exponent in desc01.items():
+        if number in desc02.keys():
+            factors[number] = max(desc02.get(number), exponent)
+        else:
+            factors[number] = exponent
+    
+    for number, exponent in desc02.items():
+        if number not in factors.keys():
+            factors[number] = exponent
+
+    #print(factors)
+    mcm = multiplyInsideDicts(factors)
+    print(f"Minimun Common Multiplier of: {number1} & {number2} is: {mcm}")
+    return mcm
+
+minCommonMultipler(12,8)
+minCommonMultipler(61,10)
