@@ -12,22 +12,26 @@ I = V / R
 
 def calculateOhmLaw(volt: float='', resis: float='', inten: float='')-> str:
     """function to calculate the Ohm Law"""
-    if volt == "":
-        volt = resis * inten
-        return print(f"Voltage is: {volt}")
-    elif resis=="":
-        resis = volt / inten
-        return print(f"Resistance is: {resis}")
-    elif inten=="":
-        inten = volt / resis
-        return print(f"Intensity is : {inten}")
-    else:
-        return print("Some data is not OK!")
-    
+    try:
+        if volt == "":
+            volt = resis * inten
+            return print(f"Voltage is: {volt}")
+        elif resis=="":
+            resis = volt / inten
+            return print(f"Resistance is: {resis}")
+        elif inten=="":
+            inten = volt / resis
+            return print(f"Intensity is : {inten}")
+        else:
+            return print("Some data is not OK!")
+    except:
+        return print("Invalid values.")
+        
 
 calculateOhmLaw(resis=10, inten=20)
 calculateOhmLaw(volt=100, inten=200)
 calculateOhmLaw(volt=100, resis=4, )
+calculateOhmLaw(volt=100)
 
 
 
