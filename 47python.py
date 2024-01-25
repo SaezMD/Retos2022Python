@@ -12,9 +12,22 @@
 
 def movementRobot(instructions: list) -> str:
     """ function to get the last position for a robot that moves in X and Y matrix """
-
+    x = 0
+    y = 0 
+    for i in range(0,len(instructions)):
+        if i % 4 == 0:
+            y += instructions[i]
+        elif i % 4 == 1:
+            x -= instructions[i]
+        elif i % 4 == 2:
+            y -= instructions[i]
+        elif i % 4 == 3:
+            x += instructions[i]
+        
+    return print(f"X: {x}, Y: {y}")
 
 movementRobot([10, 5, -2])
+movementRobot([20, 5, -2, 10, -5, 100, 99])
 
 
 
