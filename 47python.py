@@ -15,19 +15,35 @@ def movementRobot(instructions: list) -> str:
     x = 0
     y = 0 
     for i in range(0,len(instructions)):
-        if i % 4 == 0:
+        modulusFour = i % 4 
+        if modulusFour == 0:
             y += instructions[i]
-        elif i % 4 == 1:
+        elif modulusFour == 1:
             x -= instructions[i]
-        elif i % 4 == 2:
+        elif modulusFour == 2:
             y -= instructions[i]
-        elif i % 4 == 3:
+        elif modulusFour == 3:
             x += instructions[i]
-        
-    return print(f"X: {x}, Y: {y}")
 
-movementRobot([10, 5, -2])
-movementRobot([20, 5, -2, 10, -5, 100, 99])
+    #print(f"X: {x}, Y: {y}")
+    return "X: "+ str(x) +", Y: " + str(y)
 
 
+def test_case(movements: list, expected: str):
+    returned = movementRobot(movements)
+    if returned != expected:
+        raise Exception(
+            f"Case with movements {movements}, returns {returned} but it should be {expected}"
+        )
 
+def main():
+    
+    test_case([10, 5, -2], "X: -5, Y: 12")
+    test_case([20, 5, -2, 10, -5, 100, 99], "X: -95, Y: -82")
+    test_case([20, 5, -2, 10, -5, 100, 99,100, -2, 88, 18, 22, -3, -1, -1, 1, 0], "X: -59, Y: -104")
+
+    print("All cases passed!")
+
+
+if __name__ == '__main__':
+    main()
