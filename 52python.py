@@ -11,24 +11,39 @@ inside each pair of parentheses, removing the parentheses in the final message. 
 so you must reverse the characters in the correct order.
 """
 
-
-def decode(texToDecode: str)-> str:
+def decodeWrong(texToDecode: str)-> str:
     """function to decode the text with patentheses"""
-    insideParen = []
     normal = []
+    open = []
+    close = []
 
-    for i in texToDecode:
-        if i != "(" or i != ")":
-            normal.append(i)
+    for i in range(len(texToDecode)):
+        if texToDecode[i] == "(":
+            open.append(i)
+        elif texToDecode[i] == ")":
+            close.append(i)
         else:
-            insideParen.append(i)
+            normal.append(i)
+    
+    print("Open: ", open)
+    print("Close: ", close)
+    print("Normal: ", normal)
 
+    for i in range(len(open)-1,-1,-1):
+        #print(open[i])
+        for j in range(len(close)):
+            if close[j] > open[i]:
+                print( open[i],close[j])
+                break
+        
 
+def decode(message):
+    import re
+    msg = re.sub(r'\(([^()]*)\)', lambda match: match.group(1)[::-1], message)
+    return decode(msg) if '(' in msg else msg
 
-decode('hola (odnum)')
-
-decode('(olleh) (dlrow)!')
-
-decode('sa(u(cla)atn)s')
+print(decode('hola (odnum)'))
+print(decode('(olleh) (dlrow)!'))
+print(decode('sa(u(cla)atn)s'))
 
 
