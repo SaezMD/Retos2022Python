@@ -49,13 +49,17 @@ def gameHideLetters():
                 print(f"There are: {tries} remaining tries.")
         else: 
             #letter:
-            for i in range(len(completeWord)):
-                if userGuess == completeWord[i]:
-                    hideWord[i] = userGuess
+            if userGuess in completeWord:
+                for i in range(len(completeWord)):
+                    if userGuess == completeWord[i]:
+                        hideWord[i] = userGuess
+                if "_" in hideWord:
                     print(hideWord)
-                else: 
-                    tries -= 1
-                    print(f"There are: {tries} remaining tries.")
+                else:
+                    return print(f"Found it! Correct word is: {completeWord}") 
+            else: 
+                tries -= 1
+                print(f"There are: {tries} remaining tries.")
 
 
 gameHideLetters()
