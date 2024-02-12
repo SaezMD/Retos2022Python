@@ -3,7 +3,7 @@
  * Escribe un programa que imprima los 50 primeros números de la sucesión de Fibonacci empezando en 0.
  * - La serie Fibonacci se compone por una sucesión de números en
  *   la que el siguiente siempre es la suma de los dos anteriores.
- *   0, 1, 1, 2, 3, 5, 8, 13...
+ *   0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
 """
 
 def fiboList(startNumb: int = 0, lastNumb: int = 51) -> list:
@@ -27,10 +27,10 @@ def fiboPrint(lastNumb: int = 50) -> list:
             print(0)
         if i == 1:
             print(1)
-        print(x+y)
+        print(x+y,i)
         y = x+y
         x = y-x
         #print(i," - ", x)
   
-fiboPrint(50)
+fiboPrint(10)
 
