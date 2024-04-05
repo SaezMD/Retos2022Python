@@ -14,6 +14,7 @@
 
 import os
 import git
+from datetime import datetime
 
 abspath = os.path.abspath(__file__) #get the file directory
 dname = os.path.dirname(abspath)
@@ -31,10 +32,18 @@ print(ten_first_commits)
 for i in range(10):
     commit = ten_first_commits[i]
 
-    commit_hash = repo.git.show("-s", "--format= Hash: %H", commit.hexsha)
-    author = repo.git.show("-s", "--format= Author: %an <%ae>", commit.hexsha)
+    commit_hash = repo.git.show("-s", "--format=Hash: %H", commit.hexsha)
+    author = repo.git.show("-s", "--format=Author: %an <%ae>", commit.hexsha)
     message = repo.git.show("-s", "--format=Message: %s", commit.hexsha)
-    date = repo.git.show("-s", "--format=Date: %ci", commit.hexsha)
+    date = repo.git.show("-s", "--format=%ci", commit.hexsha)
 
-    print("Commit "+ str(i+1),commit_hash, author,date, message, )
+    datetime_object = datetime.strptime(date[0:-6], '%Y-%m-%d %H:%M:%S')
+    dateF = datetime_object.strftime('%d-%m-%Y %H:%M:%S')
 
+    print("Commit "+ str(i+1),commit_hash, author, "Date: " + dateF, message)
+
+commit_counter = 1
+
+for commit in list(git.Repo(".").iter_commits())[:10]:
+    print(f"Commit {commit_counter} | {commit.hexsha} | {commit.author.name} | {commit.message} | {commit.authored_datetime}".replace("\n", ""))
+    commit_counter += 1
