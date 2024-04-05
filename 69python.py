@@ -33,32 +33,13 @@ def createLadder(numbersteps:int)-> str:
         spaces = numbersteps*2
         print(" " * spaces + "_")
         for i in range(numbersteps+1, 1,-1):
-            spaces -= 2
-            print(" " * (spaces) + "_|")
+            print(" " * (i*2 -4) + "_|")
     else:
         numbersteps = abs(numbersteps)
         print("_")
         for i in range(0, numbersteps ):
-            print(" " * (i*2+1) + "|_")
-
-
+            print(" " * (i*2 +1) + "|_")
 
 
 totalSteps = int(input("Number and direction of the stairs: "))
 createLadder(totalSteps)
-
-
-def dibujar_escalera(numero_escalones):
-    if numero_escalones > 0:
-        pass
-    
-    elif numero_escalones < 0:
-        for i in range(abs(numero_escalones), 0, -1):
-            print(" " * (abs(numero_escalones) - i) + "#" * i)
-    else:
-        print("__")
-
-# Ejemplos de uso:
-dibujar_escalera(4)  # Escalera ascendente con 5 escalones
-dibujar_escalera(-3)  # Escalera descendente con 3 escalones
-dibujar_escalera(0)  # Dos guiones bajos
