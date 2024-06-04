@@ -17,8 +17,8 @@ import requests
 from bs4 import BeautifulSoup
 
 proxiesHW = {
-   'http': 'http://proxyeurope.huawei.com:8080',
-   'https': 'http://proxyeurope.huawei.com:8080',
+   'http': 'http://proxyeurope.XXX.com:8080',
+   'https': 'http://proxyeurope.XXX.com:8080',
 }
 
 res = requests.get('https://holamundo.day', verify=True,  proxies=proxiesHW)
